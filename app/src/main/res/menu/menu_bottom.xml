@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/tab_lamdai"
+        android:enabled="true"
+        android:title="Tự vệ"
+        android:icon="@drawable/lamdai_i"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/tab_lamdai_i"
+        android:enabled="true"
+        android:title="Lam đai I"
+        android:icon="@drawable/lamdai_i"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/tab_lamdai_ii"
+        android:enabled="true"
+        android:title="Lam đai II"
+        android:icon="@drawable/lamdai_ii"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/tab_lamdai_iii"
+        android:enabled="true"
+        android:title="Lam đai III"
+        android:icon="@drawable/lamdai_iii"
+        app:showAsAction="always" />
+</menu>

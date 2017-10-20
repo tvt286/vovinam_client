@@ -56,27 +56,35 @@
                     android:layout_marginLeft="10dp"
                     android:src="@android:drawable/ic_menu_search" />
 
-                    <EditText
-                        android:layout_toRightOf="@+id/ic_search"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="40dp"
-                        android:layout_centerInParent="true"
-                        android:id="@+id/ed_search"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:hint="Nhập tên"
-                        android:maxLines="1"
-                        android:textSize="16sp" />
+                <EditText
+                    android:id="@+id/ed_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_toRightOf="@+id/ic_search"
+                    android:background="@android:color/transparent"
+                    android:hint="Nhập tên"
+                    android:maxLines="1"
+                    android:textSize="16sp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <RelativeLayout
                     android:id="@+id/profile_image"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerInParent="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/user_default" />
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/user_default" />
+
+                </RelativeLayout>
 
             </RelativeLayout>
 

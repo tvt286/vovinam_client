@@ -17,12 +17,12 @@ import vn.tranty.vovinam_client.models.StudentModel;
  * Created by TRUC-SIDA on 10/19/2017.
  */
 
-public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
     private ArrayList<StudentModel> arrStudents;
     private ItemStudentListeners listeners;
 
-    public StudentAdapter(Context mContext, ItemStudentListeners listeners) {
+    public ResultAdapter(Context mContext, ItemStudentListeners listeners) {
         this.mContext = mContext;
         this.listeners = listeners;
         arrStudents = new ArrayList<>();
@@ -34,9 +34,9 @@ public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     @Override
-    public StudentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(mContext).inflate(R.layout.item_student, parent, false);
-        return new StudentViewHolder(view);
+    public ResultViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        final View view = LayoutInflater.from(mContext).inflate(R.layout.item_result, parent, false);
+        return new ResultViewHolder(view);
     }
 
     @Override
@@ -50,9 +50,9 @@ public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
 
-    class StudentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    class ResultViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
-        public StudentViewHolder(View itemView) {
+        public ResultViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);

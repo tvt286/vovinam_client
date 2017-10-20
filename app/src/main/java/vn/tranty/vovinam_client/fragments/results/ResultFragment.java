@@ -1,4 +1,4 @@
-package vn.tranty.vovinam_client.fragments.coban;
+package vn.tranty.vovinam_client.fragments.results;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,14 +24,14 @@ import vn.tranty.vovinam_client.models.StudentModel;
  * Created by TRUC-SIDA on 10/18/2017.
  */
 
-public class CoBanFragment extends Fragment {
+public class ResultFragment extends Fragment {
     @Bind(R.id.rc_student)
     RecyclerView rcStudent;
 
     StudentAdapter adapter;
     ArrayList<StudentModel> arrStudents;
 
-    public CoBanFragment() {
+    public ResultFragment() {
         // Required empty public constructor
     }
 

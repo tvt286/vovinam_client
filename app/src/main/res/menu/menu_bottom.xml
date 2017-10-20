@@ -4,8 +4,8 @@
     <item
         android:id="@+id/tab_lamdai"
         android:enabled="true"
-        android:title="Tự vệ"
-        android:icon="@drawable/lamdai_i"
+        android:title="Lam đai"
+        android:icon="@drawable/ic_tuve"
         app:showAsAction="always" />
     <item
         android:id="@+id/tab_lamdai_i"
@@ -24,5 +24,12 @@
         android:enabled="true"
         android:title="Lam đai III"
         android:icon="@drawable/lamdai_iii"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/tab_doikhang"
+        android:enabled="true"
+        android:title="Đối Kháng"
+        android:icon="@drawable/ic_doikhang"
         app:showAsAction="always" />
 </menu>

@@ -1,4 +1,4 @@
-package vn.tranty.vovinam_client;
+package vn.tranty.vovinam_client.interfaces;
 
 import android.view.View;
 
@@ -8,4 +8,6 @@ import android.view.View;
 
 public interface ItemStudentListeners {
     public void onClick(View view, int position);
+    public void onLongClick(View view, int position);
+
 }

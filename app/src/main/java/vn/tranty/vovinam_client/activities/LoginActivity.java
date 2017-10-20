@@ -1,13 +1,8 @@
 package vn.tranty.vovinam_client.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,7 +20,6 @@ public class LoginActivity extends AppCompatActivity {
     LinearLayout viewlogin;
     @Bind(R.id.btn_login)
     Button btnLogin;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

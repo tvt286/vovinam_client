@@ -13,7 +13,8 @@
         android:layout_height="48dp"
         android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_user_male" />
+
+        android:src="@drawable/user_default" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -36,7 +37,6 @@
             android:text="KHXHNV"
             android:textSize="13sp" />
     </LinearLayout>
-
     <LinearLayout
         android:layout_centerInParent="true"
         android:layout_alignParentRight="true"

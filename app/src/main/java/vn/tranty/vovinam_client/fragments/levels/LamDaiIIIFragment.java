@@ -16,6 +16,7 @@ import vn.tranty.vovinam_client.fragments.coban.CoBanFragment;
 
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_COBAN;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_DOIKHANG;
+import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_KETQUA;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_QUYEN;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_SONGLUYEN;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_VODAO;
@@ -26,16 +27,17 @@ import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_VODAO;
 
 public class LamDaiIIIFragment extends Fragment {
 
-    public  static final int POS_COBAN = 0;
-    public  static final int POS_VODAO = 1;
-    public  static final int POS_QUYEN = 2;
-    public  static final int POS_SONGLUYEN = 3;
-    public  static final int POS_DOIKHANG = 4;
+    public static final int POS_COBAN = 0;
+    public static final int POS_VODAO = 1;
+    public static final int POS_QUYEN = 2;
+    public static final int POS_SONGLUYEN = 3;
+    public static final int POS_DOIKHANG = 4;
+    public static final int POS_KETQUA = 5;
 
     @Bind(R.id.view_pager)
-     ViewPager pager;
+    ViewPager pager;
     @Bind(R.id.tab_layout)
-     TabLayout tabLayout;
+    TabLayout tabLayout;
 
     private PagerAdapter adapter;
 
@@ -47,8 +49,8 @@ public class LamDaiIIIFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_lamdai,container,false);
-        ButterKnife.bind(this,view);
+        View view = inflater.inflate(R.layout.fragment_lamdai, container, false);
+        ButterKnife.bind(this, view);
 
         addTab();
         //Add fragments
@@ -69,8 +71,7 @@ public class LamDaiIIIFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 pager.setCurrentItem(tab.getPosition());
-                switch (tab.getPosition())
-                {
+                switch (tab.getPosition()) {
                     case POS_COBAN:
                         break;
                     case POS_QUYEN:
@@ -81,6 +82,8 @@ public class LamDaiIIIFragment extends Fragment {
                     case POS_VODAO:
                         break;
                     case POS_DOIKHANG:
+                        break;
+                    case POS_KETQUA:
                         break;
                 }
 
@@ -88,18 +91,18 @@ public class LamDaiIIIFragment extends Fragment {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                switch (tab.getPosition())
-                {
+                switch (tab.getPosition()) {
                     case POS_COBAN:
                         break;
                     case POS_QUYEN:
                         break;
                     case POS_SONGLUYEN:
                         break;
-
                     case POS_VODAO:
                         break;
                     case POS_DOIKHANG:
+                        break;
+                    case POS_KETQUA:
                         break;
                 }
             }
@@ -118,6 +121,7 @@ public class LamDaiIIIFragment extends Fragment {
         adapter.addFragment(new CoBanFragment());
         adapter.addFragment(new CoBanFragment());
         adapter.addFragment(new CoBanFragment());
+        adapter.addFragment(new CoBanFragment());
 
 
     }
@@ -128,6 +132,7 @@ public class LamDaiIIIFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText(TAB_QUYEN));
         tabLayout.addTab(tabLayout.newTab().setText(TAB_SONGLUYEN));
         tabLayout.addTab(tabLayout.newTab().setText(TAB_DOIKHANG));
+        tabLayout.addTab(tabLayout.newTab().setText(TAB_KETQUA));
 
     }
 }

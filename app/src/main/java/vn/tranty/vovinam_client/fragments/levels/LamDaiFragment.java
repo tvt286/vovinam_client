@@ -17,6 +17,7 @@ import vn.tranty.vovinam_client.fragments.coban.CoBanFragment;
 import vn.tranty.vovinam_client.mics.Contanst.TAB_MENU;
 
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_COBAN;
+import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_KETQUA;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_QUYEN;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_THELUC;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_VODAO;
@@ -30,6 +31,7 @@ public class LamDaiFragment extends Fragment {
     public  static final int POS_VODAO = 1;
     public  static final int POS_QUYEN = 2;
     public  static final int POS_THELUC = 3;
+    public  static final int POS_KETQUA = 4;
 
     @Bind(R.id.view_pager)
     ViewPager pager;
@@ -79,6 +81,8 @@ public class LamDaiFragment extends Fragment {
                         break;
                     case POS_VODAO:
                         break;
+                    case POS_KETQUA:
+                        break;
                 }
 
             }
@@ -94,6 +98,8 @@ public class LamDaiFragment extends Fragment {
                     case POS_THELUC:
                         break;
                     case POS_VODAO:
+                        break;
+                    case POS_KETQUA:
                         break;
                 }
             }
@@ -111,6 +117,8 @@ public class LamDaiFragment extends Fragment {
         adapter.addFragment(new CoBanFragment());
         adapter.addFragment(new CoBanFragment());
         adapter.addFragment(new CoBanFragment());
+        adapter.addFragment(new CoBanFragment());
+
     }
 
     private void addTab() {
@@ -118,5 +126,7 @@ public class LamDaiFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText(TAB_VODAO));
         tabLayout.addTab(tabLayout.newTab().setText(TAB_QUYEN));
         tabLayout.addTab(tabLayout.newTab().setText(TAB_THELUC));
+        tabLayout.addTab(tabLayout.newTab().setText(TAB_KETQUA));
+
     }
 }

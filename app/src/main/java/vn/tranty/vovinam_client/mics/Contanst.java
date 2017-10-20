@@ -12,6 +12,9 @@ public class Contanst {
         public  static final String TAB_VODAO = "Võ Đạo";
         public  static final String TAB_COBAN = "Cơ Bản";
         public  static final String TAB_SONGLUYEN = "Song Luyện";
+        public  static final String TAB_KETQUA = "Kết Quả";
+        public  static final String TAB_DOIKHANG_NAM = "Đối Kháng Nam";
+        public  static final String TAB_DOIKHANG_NU = "Đối Kháng Nữ";
 
     }
 }

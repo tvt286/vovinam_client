@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -21,8 +21,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".dialogs.PointDialog"
-            android:theme="@style/MyDialog"></activity>
+        <activity
+            android:name=".dialogs.PointDialog"
+            android:theme="@style/MyDialog" />
+        <activity
+            android:name=".dialogs.HistoryDialog"
+            android:theme="@style/MyDialog" />
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".dialogs.ChangePasswordDialog"
+            android:theme="@style/MyDialog"/>
+        <activity android:name=".dialogs.PointDoiKhangDialog"
+            android:theme="@style/MyDialog"/>
     </application>
 
 </manifest>

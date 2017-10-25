@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.R;
-import vn.tranty.vovinam_client.models.HistoryModel;
+import vn.tranty.vovinam_client.models.histories.HistoryModel;
 
 /**
  * Created by TRUC-SIDA on 10/19/2017.

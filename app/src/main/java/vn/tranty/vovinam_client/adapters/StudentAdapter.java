@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.interfaces.ItemStudentListeners;
 import vn.tranty.vovinam_client.R;
-import vn.tranty.vovinam_client.models.StudentModel;
+import vn.tranty.vovinam_client.models.students.StudentModel;
 
 /**
  * Created by TRUC-SIDA on 10/19/2017.

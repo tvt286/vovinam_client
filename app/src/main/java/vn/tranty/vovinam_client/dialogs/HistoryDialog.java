@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -12,7 +11,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.adapters.HistoryAdapter;
-import vn.tranty.vovinam_client.models.HistoryModel;
+import vn.tranty.vovinam_client.models.histories.HistoryModel;
 
 public class HistoryDialog extends AppCompatActivity {
     @Bind(R.id.rc_history)

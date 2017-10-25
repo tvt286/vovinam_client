@@ -17,4 +17,10 @@ public class Contanst {
         public  static final String TAB_DOIKHANG_NU = "Đối Kháng Nữ";
 
     }
+
+    public static class API {
+        public  static final String URL = "http://www.vovinam-khxhnv.somee.com/Api/";
+
+
+    }
 }

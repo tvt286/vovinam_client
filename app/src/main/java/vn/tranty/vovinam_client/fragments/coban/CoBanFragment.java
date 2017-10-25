@@ -18,7 +18,7 @@ import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.dialogs.HistoryDialog;
 import vn.tranty.vovinam_client.adapters.StudentAdapter;
 import vn.tranty.vovinam_client.dialogs.PointDialog;
-import vn.tranty.vovinam_client.models.StudentModel;
+import vn.tranty.vovinam_client.models.students.StudentModel;
 
 /**
  * Created by TRUC-SIDA on 10/18/2017.

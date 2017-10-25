@@ -1,4 +1,4 @@
-package vn.tranty.vovinam_client.models;
+package vn.tranty.vovinam_client.models.students;
 
 /**
  * Created by TRUC-SIDA on 10/19/2017.

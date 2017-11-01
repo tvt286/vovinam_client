@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.adapters.PagerAdapter;
 import vn.tranty.vovinam_client.fragments.coban.CoBanFragment;
+import vn.tranty.vovinam_client.mics.Contanst;
 import vn.tranty.vovinam_client.mics.Contanst.TAB_MENU;
 
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_COBAN;
@@ -113,7 +114,7 @@ public class LamDaiFragment extends Fragment {
 
     private void addFragment() {
         adapter = new PagerAdapter(getFragmentManager());
-        adapter.addFragment(new CoBanFragment());
+        adapter.addFragment(CoBanFragment.newInstance(Contanst.FRAGMENT.LAMDAI));
         adapter.addFragment(new CoBanFragment());
         adapter.addFragment(new CoBanFragment());
         adapter.addFragment(new CoBanFragment());

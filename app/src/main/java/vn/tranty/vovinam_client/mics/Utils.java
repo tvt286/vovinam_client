@@ -11,7 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import vn.tranty.vovinam_client.R;
+import vn.tranty.vovinam_client.models.users.UserPermission;
 
 /**
  * Created by TRUC-SIDA on 10/19/2017.
@@ -37,5 +40,9 @@ public class Utils {
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
         toast.show();
+    }
+
+    public static void convertPermissionToString(List<UserPermission> permissions) {
+
     }
 }

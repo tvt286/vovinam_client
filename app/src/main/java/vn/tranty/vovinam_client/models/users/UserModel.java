@@ -3,6 +3,7 @@ package vn.tranty.vovinam_client.models.users;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
 public class UserModel {
     @SerializedName("id")
     @Expose
-    public Integer id;
+    public int id;
     @SerializedName("user_name")
     @Expose
     public String userName;
@@ -36,7 +37,7 @@ public class UserModel {
     public Boolean isAdminCompany;
     @SerializedName("user_permission")
     @Expose
-    public List<UserPermission> userPermission = null;
+    public ArrayList<UserPermission> userPermission = null;
     @SerializedName("group")
     @Expose
     public List<Object> group = null;
@@ -44,12 +45,3 @@ public class UserModel {
 
 }
 
-class UserPermission {
-
-    @SerializedName("user_id")
-    @Expose
-    public Integer userId;
-    @SerializedName("permission_id")
-    @Expose
-    public Integer permissionId;
-}

@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.adapters.PagerAdapter;
@@ -34,9 +34,9 @@ public class LamDaiFragment extends Fragment {
     public  static final int POS_THELUC = 3;
     public  static final int POS_KETQUA = 4;
 
-    @Bind(R.id.view_pager)
+    @BindView(R.id.view_pager)
     ViewPager pager;
-    @Bind(R.id.tab_layout)
+    @BindView(R.id.tab_layout)
     TabLayout tabLayout;
 
     private PagerAdapter adapter;
@@ -114,11 +114,17 @@ public class LamDaiFragment extends Fragment {
 
     private void addFragment() {
         adapter = new PagerAdapter(getFragmentManager());
-        adapter.addFragment(CoBanFragment.newInstance(Contanst.FRAGMENT.LAMDAI));
-        adapter.addFragment(new CoBanFragment());
-        adapter.addFragment(new CoBanFragment());
-        adapter.addFragment(new CoBanFragment());
-        adapter.addFragment(new CoBanFragment());
+        adapter.addFragment(CoBanFragment.newInstance(1));
+        adapter.addFragment(CoBanFragment.newInstance(1));
+        adapter.addFragment(CoBanFragment.newInstance(1));
+        adapter.addFragment(CoBanFragment.newInstance(1));
+        adapter.addFragment(CoBanFragment.newInstance(1));
+
+
+//        adapter.addFragment(new CoBanFragment());
+//        adapter.addFragment(new CoBanFragment());
+//        adapter.addFragment(new CoBanFragment());
+//        adapter.addFragment(new CoBanFragment());
 
     }
 

@@ -11,21 +11,21 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.interfaces.ItemStudentListeners;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.dialogs.HistoryDialog;
 import vn.tranty.vovinam_client.adapters.StudentAdapter;
 import vn.tranty.vovinam_client.dialogs.PointDialog;
-import vn.tranty.vovinam_client.models.students.StudentModel;
+import vn.tranty.vovinam_client.models.chamthi.StudentModel;
 
 /**
  * Created by TRUC-SIDA on 10/18/2017.
  */
 
 public class ResultFragment extends Fragment {
-    @Bind(R.id.rc_student)
+    @BindView(R.id.rc_student)
     RecyclerView rcStudent;
 
     StudentAdapter adapter;

@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.adapters.PagerAdapter;
@@ -32,9 +32,9 @@ public class DoiKhangFragment extends Fragment {
     public  static final int POS_NU = 1;
 
 
-    @Bind(R.id.view_pager)
+    @BindView(R.id.view_pager)
     ViewPager pager;
-    @Bind(R.id.tab_layout)
+    @BindView(R.id.tab_layout)
     TabLayout tabLayout;
 
     private PagerAdapter adapter;
@@ -50,13 +50,13 @@ public class DoiKhangFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_lamdai,container,false);
         ButterKnife.bind(this,view);
 
-        addTab();
-
-        //Add fragments
-        addFragment();
-
-        //Setting adapter
-        settingAdapter();
+//        addTab();
+//
+//        //Add fragments
+//        addFragment();
+//
+//        //Setting adapter
+//        settingAdapter();
 
         return view;
     }

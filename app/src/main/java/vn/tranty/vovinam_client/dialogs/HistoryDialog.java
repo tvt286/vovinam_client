@@ -7,14 +7,14 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.adapters.HistoryAdapter;
 import vn.tranty.vovinam_client.models.histories.HistoryModel;
 
 public class HistoryDialog extends AppCompatActivity {
-    @Bind(R.id.rc_history)
+    @BindView(R.id.rc_history)
     RecyclerView rcHistory;
 
     HistoryAdapter adapter;

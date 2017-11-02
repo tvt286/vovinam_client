@@ -1,6 +1,8 @@
 package vn.tranty.vovinam_client.fragments.coban;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,23 +13,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import java.security.Permission;
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.VovinamApplication;
-import vn.tranty.vovinam_client.fragments.BlankFragment;
+import vn.tranty.vovinam_client.fragments.BlankFragment2;
 import vn.tranty.vovinam_client.interfaces.ItemStudentListeners;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.dialogs.HistoryDialog;
 import vn.tranty.vovinam_client.adapters.StudentAdapter;
 import vn.tranty.vovinam_client.dialogs.PointDialog;
+import vn.tranty.vovinam_client.interfaces.Response;
 import vn.tranty.vovinam_client.mics.Contanst;
-import vn.tranty.vovinam_client.models.students.StudentModel;
+import vn.tranty.vovinam_client.models.chamthi.StudentModel;
 import vn.tranty.vovinam_client.models.users.UserModel;
 import vn.tranty.vovinam_client.models.users.UserPermission;
 import vn.tranty.vovinam_client.preferences.UserShared;
+import vn.tranty.vovinam_client.requests.LevelUpRequest;
 
 /**
  * Created by TRUC-SIDA on 10/18/2017.
@@ -38,9 +41,9 @@ public class CoBanFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String LEVEL = "Level";
 
-    @Bind(R.id.rc_student)
+    @BindView(R.id.rc_student)
     RecyclerView rcStudent;
-    @Bind(R.id.layout_null_permission)
+    @BindView(R.id.layout_null_permission)
     RelativeLayout layoutNullPermission;
 
     private StudentAdapter adapter;
@@ -49,7 +52,8 @@ public class CoBanFragment extends Fragment {
     private UserModel userVO;
     private VovinamApplication application;
     private int permission = 1;
-    private int level;
+    private int level = 1;
+    private BlankFragment2.OnFragmentInteractionListener mListener;
 
     public CoBanFragment() {
     }
@@ -60,6 +64,38 @@ public class CoBanFragment extends Fragment {
         args.putInt(LEVEL, level);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof BlankFragment2.OnFragmentInteractionListener) {
+            mListener = (BlankFragment2.OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
     }
 
     @Override
@@ -109,19 +145,42 @@ public class CoBanFragment extends Fragment {
 
         rcStudent.setLayoutManager(new LinearLayoutManager(getActivity()));
         rcStudent.setAdapter(adapter);
-        adapter.setArrayStudents(arrStudents);
     }
 
     private void checkPermission() {
         UserPermission per= new UserPermission(userVO.id, permission);
-        if(!arrPermissions.contains(per))
+        if(!arrPermissions.contains(per) && !userVO.isAdminCompany)
         {
             layoutNullPermission.setVisibility(View.VISIBLE);
         }
         else
         {
             addRecycler();
+            getData();
         }
+    }
+
+    private void getData() {
+        LevelUpRequest.getLevelUps(5, 1, level, new Response() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onSuccess(int error_code, String message, Object obj) {
+                if (error_code == 200)
+                {
+                    arrStudents = (ArrayList<StudentModel>) obj;
+                    adapter.setArrayStudents(arrStudents);
+                }
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
     }
 
     private void init() {

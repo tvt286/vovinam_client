@@ -13,20 +13,31 @@ import vn.tranty.vovinam_client.models.users.UserPermission;
  */
 
 public class VovinamApplication extends Application {
-   private static Dictionary<Integer,ArrayList<UserPermission>> permissions;
+    private static Dictionary<Integer, ArrayList<UserPermission>> permissions;
+
+    private static int examinationId;
 
     @Override
     public void onCreate() {
         super.onCreate();
         permissions = new Hashtable<>();
-     }
-
-
-  public void setArrPermission(int id, ArrayList<UserPermission> arr){
-      permissions.put(id, arr);
     }
 
-    public ArrayList<UserPermission> getArrayPermission(int userId){
+
+    public void setArrPermission(int id, ArrayList<UserPermission> arr) {
+        permissions.put(id, arr);
+    }
+
+    public ArrayList<UserPermission> getArrayPermission(int userId) {
         return permissions.get(userId);
     }
+
+    public static int getExaminationId() {
+        return examinationId;
+    }
+
+    public static void setExaminationId(int examinationId) {
+        VovinamApplication.examinationId = examinationId;
+    }
+
 }

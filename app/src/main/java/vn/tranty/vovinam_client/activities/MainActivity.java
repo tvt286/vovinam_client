@@ -1,5 +1,6 @@
 package vn.tranty.vovinam_client.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
@@ -17,7 +18,7 @@ import android.widget.RelativeLayout;
 
 import java.lang.reflect.Field;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import vn.tranty.vovinam_client.R;
@@ -30,13 +31,13 @@ import vn.tranty.vovinam_client.fragments.levels.LamDaiIIIFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar myToolbar;
-    @Bind(R.id.bottom_nav)
+    @BindView(R.id.bottom_nav)
     BottomNavigationView bottomNavigation;
-    @Bind(R.id.ed_search)
+    @BindView(R.id.ed_search)
     EditText editSearch;
-    @Bind(R.id.profile_image)
+    @BindView(R.id.profile_image)
     RelativeLayout imProfile;
 
     @Override
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("RestrictedApi")
     public void disableShiftMode(BottomNavigationView view) {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
         try {

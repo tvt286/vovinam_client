@@ -9,18 +9,18 @@ import android.support.v7.widget.Toolbar;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.dialogs.ChangePasswordDialog;
 
 public class ProfileActivity extends AppCompatActivity {
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar myToolbar;
-    @Bind(R.id.row_change_password)
+    @BindView(R.id.row_change_password)
     LinearLayout changePass;
-    @Bind(R.id.row_logout)
+    @BindView(R.id.row_logout)
     LinearLayout changeLogout;
 
     @Override

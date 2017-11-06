@@ -25,6 +25,18 @@ public class Contanst {
         public static final int LAMDAI_III = 4;
     }
 
+    public static class POINT_TYPE {
+        public static final int CO_BAN = 1;
+        public static final int VO_DAO = 2;
+        public static final int THE_LUC = 3;
+        public static final int QUYEN = 4;
+        public static final int DOI_KHANG = 5;
+        public static final int SONG_LUYEN = 6;
+        public static final int KETQUA = 7;
+
+
+    }
+
     public static class API {
         public static final String URL = "http://www.vovinam-khxhnv.somee.com/Api/";
     }

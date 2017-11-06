@@ -10,10 +10,10 @@ import com.google.gson.annotations.SerializedName;
 public class TheLucModel {
     @SerializedName("id")
     @Expose
-    public Integer id;
+    public int id;
     @SerializedName("point")
     @Expose
-    public Integer point;
+    public float point;
     @SerializedName("user_name")
     @Expose
     public String userName;

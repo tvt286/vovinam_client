@@ -12,13 +12,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.adapters.PagerAdapter;
-import vn.tranty.vovinam_client.fragments.coban.CoBanFragment;
+import vn.tranty.vovinam_client.fragments.students.StudentFragment;
+import vn.tranty.vovinam_client.mics.Contanst;
 
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_COBAN;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_DOIKHANG;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_KETQUA;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_QUYEN;
-import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_THELUC;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_VODAO;
 
 /**
@@ -51,12 +51,12 @@ public class LamDaiIFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_lamdai,container,false);
         ButterKnife.bind(this,view);
 
-//        addTab();
-//        //Add fragments
-//        addFragment();
-//
-//        //Setting adapter
-//        settingAdapter();
+        addTab();
+        //Add fragments
+        addFragment();
+
+        //Setting adapter
+        settingAdapter();
 
         return view;
     }
@@ -114,11 +114,11 @@ public class LamDaiIFragment extends Fragment {
 
     private void addFragment() {
         adapter = new PagerAdapter(getFragmentManager());
-        adapter.addFragment(new CoBanFragment());
-        adapter.addFragment(new CoBanFragment());
-        adapter.addFragment(new CoBanFragment());
-        adapter.addFragment(new CoBanFragment());
-        adapter.addFragment(new CoBanFragment());
+        adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI_I, Contanst.POINT_TYPE.CO_BAN));
+        adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI_I, Contanst.POINT_TYPE.VO_DAO));
+        adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI_I, Contanst.POINT_TYPE.QUYEN));
+        adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI_I, Contanst.POINT_TYPE.DOI_KHANG));
+        adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI_I, Contanst.POINT_TYPE.CO_BAN));
 
 
     }

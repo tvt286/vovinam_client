@@ -12,16 +12,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.adapters.PagerAdapter;
-import vn.tranty.vovinam_client.fragments.coban.CoBanFragment;
 
-import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_COBAN;
-import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_DOIKHANG;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_DOIKHANG_NAM;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_DOIKHANG_NU;
-import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_KETQUA;
-import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_QUYEN;
-import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_THELUC;
-import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_VODAO;
 
 /**
  * Created by TRUC-SIDA on 10/20/2017.
@@ -102,8 +95,8 @@ public class DoiKhangFragment extends Fragment {
 
     private void addFragment() {
         adapter = new PagerAdapter(getFragmentManager());
-        adapter.addFragment(new CoBanFragment());
-        adapter.addFragment(new CoBanFragment());
+//        adapter.addFragment(new CoBanFragment());
+//        adapter.addFragment(new CoBanFragment());
     }
 
     private void addTab() {

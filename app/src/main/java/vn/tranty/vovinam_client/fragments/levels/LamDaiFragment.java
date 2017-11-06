@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +12,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.adapters.PagerAdapter;
-import vn.tranty.vovinam_client.fragments.coban.CoBanFragment;
+import vn.tranty.vovinam_client.fragments.students.StudentFragment;
 import vn.tranty.vovinam_client.mics.Contanst;
-import vn.tranty.vovinam_client.mics.Contanst.TAB_MENU;
 
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_COBAN;
 import static vn.tranty.vovinam_client.mics.Contanst.TAB_MENU.TAB_KETQUA;
@@ -64,8 +62,8 @@ public class LamDaiFragment extends Fragment {
     }
 
     private void settingAdapter() {
-        pager.setAdapter(adapter);
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        pager.setAdapter(adapter);
 
         // onclick tab
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -114,17 +112,12 @@ public class LamDaiFragment extends Fragment {
 
     private void addFragment() {
         adapter = new PagerAdapter(getFragmentManager());
-        adapter.addFragment(CoBanFragment.newInstance(1));
-        adapter.addFragment(CoBanFragment.newInstance(1));
-        adapter.addFragment(CoBanFragment.newInstance(1));
-        adapter.addFragment(CoBanFragment.newInstance(1));
-        adapter.addFragment(CoBanFragment.newInstance(1));
 
-
-//        adapter.addFragment(new CoBanFragment());
-//        adapter.addFragment(new CoBanFragment());
-//        adapter.addFragment(new CoBanFragment());
-//        adapter.addFragment(new CoBanFragment());
+        adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI, Contanst.POINT_TYPE.CO_BAN));
+        adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI, Contanst.POINT_TYPE.VO_DAO));
+        adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI, Contanst.POINT_TYPE.QUYEN));
+        adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI, Contanst.POINT_TYPE.THE_LUC));
+        adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI, Contanst.POINT_TYPE.CO_BAN));
 
     }
 

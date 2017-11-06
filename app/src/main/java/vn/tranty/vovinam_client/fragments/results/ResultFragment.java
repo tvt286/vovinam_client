@@ -61,7 +61,7 @@ public class ResultFragment extends Fragment {
 
         rcStudent.setLayoutManager(new LinearLayoutManager(getActivity()));
         rcStudent.setAdapter(adapter);
-        adapter.setArrayStudents(arrStudents);
+        adapter.setArrayStudents(arrStudents,1);
         return view;
     }
 }

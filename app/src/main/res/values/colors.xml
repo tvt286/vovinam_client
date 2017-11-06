@@ -13,4 +13,7 @@
     <color name="colorDivider">#B6B6B6</color>
     <color name="colorDarkText">#000000</color>
 
+    <color name="color_yellow">#FFC107</color>
+    <color name="color_blue">#3F51B5</color>
+    <color name="color_red">#F44336</color>
 </resources>

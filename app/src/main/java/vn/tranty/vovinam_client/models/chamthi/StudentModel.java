@@ -3,8 +3,6 @@ package vn.tranty.vovinam_client.models.chamthi;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import vn.tranty.vovinam_client.models.Response;
-
 /**
  * Created by TRUC-SIDA on 10/19/2017.
  */

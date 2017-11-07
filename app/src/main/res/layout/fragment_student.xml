@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:orientation="vertical">
+    android:background="@android:color/white">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swpStudent"
@@ -21,20 +20,13 @@
                 android:layout_height="match_parent"
                 android:paddingTop="4dp" />
 
-            <RelativeLayout
-                android:id="@+id/layout_null_permission"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                >
 
-                <TextView
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="Bạn không có quyền xem \n Vui lòng liên hệ Admin." />
-            </RelativeLayout>
         </RelativeLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    <include layout="@layout/layout_null_permission"/>
+
+    <include layout="@layout/layout_network"/>
+
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package vn.tranty.vovinam_client.fragments.students;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.VovinamApplication;
 import vn.tranty.vovinam_client.adapters.StudentAdapter;
@@ -35,6 +37,8 @@ import vn.tranty.vovinam_client.requests.LevelUpRequest;
 public class StudentFragment extends Fragment {
     private static final String LEVEL = "Level";
     private static final String POINT_TYPE = "PointType";
+    public static final int START_POINT = 1001;
+    public static final int END_POINT = 1002;
 
     @BindView(R.id.rc_student)
     RecyclerView rcStudent;
@@ -42,6 +46,8 @@ public class StudentFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.layout_null_permission)
     RelativeLayout layoutNullPermission;
+    @BindView(R.id.layout_network)
+    RelativeLayout layoutNetwork;
 
     // TODO: Rename and change types of parameters
     private StudentAdapter adapter;
@@ -53,6 +59,10 @@ public class StudentFragment extends Fragment {
     private int level = 1;
     private int pointType;
     private UserPermission per;
+    private int studentSelected;
+    private StudentModel studentModel;
+    private float point;
+
     public StudentFragment() {
         // Required empty public constructor
     }
@@ -61,7 +71,7 @@ public class StudentFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param level Parameter 1.
+     * @param level     Parameter 1.
      * @param pointType Parameter 1.
      * @return A new instance of fragment StudentFragment.
      */
@@ -85,42 +95,42 @@ public class StudentFragment extends Fragment {
             // tu vệ
             if (level == Contanst.FRAGMENT.LAMDAI && pointType == Contanst.POINT_TYPE.CO_BAN)
                 permission = Contanst.ROLE.LAMDAI_COBAN;
-            else if(level == Contanst.FRAGMENT.LAMDAI && pointType == Contanst.POINT_TYPE.VO_DAO)
+            else if (level == Contanst.FRAGMENT.LAMDAI && pointType == Contanst.POINT_TYPE.VO_DAO)
                 permission = Contanst.ROLE.LAMDAI_VODAO;
-            else if(level == Contanst.FRAGMENT.LAMDAI && pointType == Contanst.POINT_TYPE.QUYEN)
+            else if (level == Contanst.FRAGMENT.LAMDAI && pointType == Contanst.POINT_TYPE.QUYEN)
                 permission = Contanst.ROLE.LAMDAI_QUYEN;
-            else if(level == Contanst.FRAGMENT.LAMDAI && pointType == Contanst.POINT_TYPE.THE_LUC)
+            else if (level == Contanst.FRAGMENT.LAMDAI && pointType == Contanst.POINT_TYPE.THE_LUC)
                 permission = Contanst.ROLE.LAMDAI_THELUC;
-            // lam dai 1
+                // lam dai 1
             else if (level == Contanst.FRAGMENT.LAMDAI_I && pointType == Contanst.POINT_TYPE.CO_BAN)
                 permission = Contanst.ROLE.LAMDAI_I_COBAN;
-            else if(level == Contanst.FRAGMENT.LAMDAI_I && pointType == Contanst.POINT_TYPE.VO_DAO)
+            else if (level == Contanst.FRAGMENT.LAMDAI_I && pointType == Contanst.POINT_TYPE.VO_DAO)
                 permission = Contanst.ROLE.LAMDAI_I_VODAO;
-            else if(level == Contanst.FRAGMENT.LAMDAI_I && pointType == Contanst.POINT_TYPE.QUYEN)
+            else if (level == Contanst.FRAGMENT.LAMDAI_I && pointType == Contanst.POINT_TYPE.QUYEN)
                 permission = Contanst.ROLE.LAMDAI_I_QUYEN;
-            else if(level == Contanst.FRAGMENT.LAMDAI_I && pointType == Contanst.POINT_TYPE.DOI_KHANG)
+            else if (level == Contanst.FRAGMENT.LAMDAI_I && pointType == Contanst.POINT_TYPE.DOI_KHANG)
                 permission = Contanst.ROLE.LAMDAI_I_DOIKHANG;
 
-            // lam dai 2
+                // lam dai 2
             else if (level == Contanst.FRAGMENT.LAMDAI_II && pointType == Contanst.POINT_TYPE.CO_BAN)
                 permission = Contanst.ROLE.LAMDAI_II_COBAN;
-            else if(level == Contanst.FRAGMENT.LAMDAI_II && pointType == Contanst.POINT_TYPE.VO_DAO)
+            else if (level == Contanst.FRAGMENT.LAMDAI_II && pointType == Contanst.POINT_TYPE.VO_DAO)
                 permission = Contanst.ROLE.LAMDAI_II_VODAO;
-            else if(level == Contanst.FRAGMENT.LAMDAI_II && pointType == Contanst.POINT_TYPE.QUYEN)
+            else if (level == Contanst.FRAGMENT.LAMDAI_II && pointType == Contanst.POINT_TYPE.QUYEN)
                 permission = Contanst.ROLE.LAMDAI_II_QUYEN;
-            else if(level == Contanst.FRAGMENT.LAMDAI_II && pointType == Contanst.POINT_TYPE.DOI_KHANG)
+            else if (level == Contanst.FRAGMENT.LAMDAI_II && pointType == Contanst.POINT_TYPE.DOI_KHANG)
                 permission = Contanst.ROLE.LAMDAI_II_DOIKHANG;
 
-            // lam dai 3
+                // lam dai 3
             else if (level == Contanst.FRAGMENT.LAMDAI_III && pointType == Contanst.POINT_TYPE.CO_BAN)
                 permission = Contanst.ROLE.LAMDAI_III_COBAN;
-            else if(level == Contanst.FRAGMENT.LAMDAI_III && pointType == Contanst.POINT_TYPE.VO_DAO)
+            else if (level == Contanst.FRAGMENT.LAMDAI_III && pointType == Contanst.POINT_TYPE.VO_DAO)
                 permission = Contanst.ROLE.LAMDAI_III_VODAO;
-            else if(level == Contanst.FRAGMENT.LAMDAI_III && pointType == Contanst.POINT_TYPE.QUYEN)
+            else if (level == Contanst.FRAGMENT.LAMDAI_III && pointType == Contanst.POINT_TYPE.QUYEN)
                 permission = Contanst.ROLE.LAMDAI_III_QUYEN;
-            else if(level == Contanst.FRAGMENT.LAMDAI_III && pointType == Contanst.POINT_TYPE.DOI_KHANG)
+            else if (level == Contanst.FRAGMENT.LAMDAI_III && pointType == Contanst.POINT_TYPE.DOI_KHANG)
                 permission = Contanst.ROLE.LAMDAI_III_DOIKHANG;
-            else if(level == Contanst.FRAGMENT.LAMDAI_III && pointType == Contanst.POINT_TYPE.SONG_LUYEN)
+            else if (level == Contanst.FRAGMENT.LAMDAI_III && pointType == Contanst.POINT_TYPE.SONG_LUYEN)
                 permission = Contanst.ROLE.LAMDAI_III_SONGLUYEN;
         }
     }
@@ -142,8 +152,15 @@ public class StudentFragment extends Fragment {
         adapter = new StudentAdapter(getActivity(), new ItemStudentListeners() {
             @Override
             public void onClick(View view, int position) {
+                studentSelected = position;
+                studentModel = arrStudents.get(position);
+
                 Intent i = new Intent(getActivity(), PointDialog.class);
-                startActivity(i);
+                i.putExtra("UserId", userVO.id);
+                i.putExtra("StudentId", arrStudents.get(position).id);
+                i.putExtra("StudentName", arrStudents.get(position).name);
+                i.putExtra("PointType", pointType);
+                startActivityForResult(i, START_POINT);
             }
 
             @Override
@@ -160,19 +177,18 @@ public class StudentFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if (UserPermission.contains(arrPermissions,per) || userVO.isAdminCompany) {
+                if (UserPermission.contains(arrPermissions, per) || userVO.isAdminCompany) {
                     getData();
-                }
-                else
+                } else
                     swipeRefreshLayout.setRefreshing(false);
             }
         });
     }
 
     private void checkPermission() {
-        if (!UserPermission.contains(arrPermissions,per) && !userVO.isAdminCompany) {
+        if (!UserPermission.contains(arrPermissions, per) && !userVO.isAdminCompany) {
             layoutNullPermission.setVisibility(View.VISIBLE);
-
+            layoutNetwork.setVisibility(View.GONE);
         } else {
             swipeRefreshLayout.post(new Runnable() {
                 @Override
@@ -185,8 +201,21 @@ public class StudentFragment extends Fragment {
         }
     }
 
+    @OnClick(R.id.layout_network)
+    void clickNetowrk()
+    {
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+                getData();
+            }
+        });
+    }
+
     private void getData() {
         layoutNullPermission.setVisibility(View.GONE);
+        layoutNetwork.setVisibility(View.GONE);
         LevelUpRequest.getLevelUps(5, 1, level, new Response() {
             @Override
             public void onStart() {
@@ -205,6 +234,8 @@ public class StudentFragment extends Fragment {
             @Override
             public void onFailure() {
                 swipeRefreshLayout.setRefreshing(false);
+                layoutNetwork.setVisibility(View.VISIBLE);
+                layoutNullPermission.setVisibility(View.GONE);
 
             }
         });
@@ -220,5 +251,60 @@ public class StudentFragment extends Fragment {
 
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == END_POINT) {
+            point = data.getFloatExtra("Point", 0);
+            if (pointType == Contanst.POINT_TYPE.CO_BAN) {
+                studentModel.coBan.point = point;
+                studentModel.coBan.userName = userVO.fullName;
+            } else if (pointType == Contanst.POINT_TYPE.VO_DAO) {
+                studentModel.voDao.point = point;
+                studentModel.voDao.userName = userVO.fullName;
 
+            } else if (pointType == Contanst.POINT_TYPE.THE_LUC) {
+                studentModel.theLuc.point = point;
+                studentModel.theLuc.userName = userVO.fullName;
+
+            } else if (pointType == Contanst.POINT_TYPE.QUYEN) {
+                studentModel.quyen.point = point;
+                studentModel.quyen.userName = userVO.fullName;
+
+            } else if (pointType == Contanst.POINT_TYPE.SONG_LUYEN) {
+                studentModel.songLuyen.point = point;
+                studentModel.songLuyen.userName = userVO.fullName;
+            }
+
+            new CapNhatGiaoDienDiemThi().execute();
+        }
+    }
+
+
+    public class CapNhatGiaoDienDiemThi extends AsyncTask<Void, StudentModel, Void> {
+
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            publishProgress(studentModel);
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(StudentModel... values) {
+            super.onProgressUpdate(values);
+            if (pointType == Contanst.POINT_TYPE.CO_BAN)
+                arrStudents.get(studentSelected).coBan = values[0].coBan;
+            else if (pointType == Contanst.POINT_TYPE.VO_DAO)
+                studentModel.voDao.point = point;
+            else if (pointType == Contanst.POINT_TYPE.THE_LUC)
+                studentModel.theLuc.point = point;
+            else if (pointType == Contanst.POINT_TYPE.QUYEN)
+                studentModel.quyen.point = point;
+            else if (pointType == Contanst.POINT_TYPE.SONG_LUYEN)
+                studentModel.songLuyen.point = point;
+            adapter.notifyItemChanged(studentSelected, studentModel);
+
+        }
+    }
 }

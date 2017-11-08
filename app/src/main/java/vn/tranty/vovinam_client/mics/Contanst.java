@@ -23,6 +23,7 @@ public class Contanst {
         public static final int LAMDAI_I = 2;
         public static final int LAMDAI_II = 3;
         public static final int LAMDAI_III = 4;
+        public static final int DOI_KHANG = 5;
     }
 
     public static class POINT_TYPE {
@@ -34,9 +35,12 @@ public class Contanst {
         public static final int SONG_LUYEN = 6;
         public static final int KETQUA = 7;
 
-
     }
 
+    public static class GENDER {
+        public static final int DK_NAM = 1;
+        public static final int DK_NU = 2;
+    }
     public static class API {
         public static final String URL = "http://www.vovinam-khxhnv.somee.com/Api/";
     }
@@ -55,12 +59,13 @@ public class Contanst {
         public static final int LAMDAI_II_COBAN = 9001;
         public static final int LAMDAI_II_QUYEN = 9002;
         public static final int LAMDAI_II_VODAO = 9003;
-        public static final int LAMDAI_II_DOIKHANG = 9004;
 
         public static final int LAMDAI_III_COBAN = 10001;
         public static final int LAMDAI_III_QUYEN = 10002;
         public static final int LAMDAI_III_VODAO = 10003;
-        public static final int LAMDAI_III_DOIKHANG = 10004;
-        public static final int LAMDAI_III_SONGLUYEN = 10005;
+        public static final int LAMDAI_III_SONGLUYEN = 10004;
+
+        public static final int DK_NAM = 10001;
+        public static final int DK_NU = 10002;
     }
 }

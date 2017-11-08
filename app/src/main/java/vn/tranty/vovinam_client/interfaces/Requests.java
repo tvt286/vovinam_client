@@ -7,6 +7,7 @@ import retrofit2.http.POST;
 
 import retrofit2.http.Query;
 import vn.tranty.vovinam_client.models.*;
+import vn.tranty.vovinam_client.models.chamthi.CompeteRespone;
 import vn.tranty.vovinam_client.models.chamthi.LevelUpRespone;
 import vn.tranty.vovinam_client.models.examinations.ExaminationResponseVO;
 import vn.tranty.vovinam_client.models.users.UserResponseVO;
@@ -25,6 +26,8 @@ public interface Requests {
     @POST("LevelUp/UpdatePoint")
     Call<ResponseVO> updatePoint(@Query("levelup_id") int studentId, @Query("user_id") int user_id, @Query("point") float point, @Query("point_type") int pointType );
 
+    @GET("Compete/GetCompetes")
+    Call<CompeteRespone> getCompetes(@Query("examination_id") int examination_id, @Query("company_id") int companyId, @Query("gender") int gender);
 
 
 }

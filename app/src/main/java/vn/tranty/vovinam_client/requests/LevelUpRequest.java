@@ -12,6 +12,7 @@ import vn.tranty.vovinam_client.models.chamthi.LevelUpRespone;
  */
 
 public class LevelUpRequest {
+    
     public static void getLevelUps(int examinationId, int companyId, int levelId, final Response resp) {
         resp.onStart();
         Requests client = HandlerRequest.createService(Requests.class);

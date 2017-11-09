@@ -24,7 +24,7 @@ import vn.tranty.vovinam_client.adapters.StudentAdapter;
 import vn.tranty.vovinam_client.customs.CustomSwipeLayout;
 import vn.tranty.vovinam_client.dialogs.HistoryDialog;
 import vn.tranty.vovinam_client.dialogs.PointDialog;
-import vn.tranty.vovinam_client.interfaces.ItemStudentListeners;
+import vn.tranty.vovinam_client.interfaces.ItemListeners;
 import vn.tranty.vovinam_client.interfaces.Response;
 import vn.tranty.vovinam_client.mics.Contanst;
 import vn.tranty.vovinam_client.models.chamthi.StudentModel;
@@ -62,6 +62,7 @@ public class StudentFragment extends Fragment {
     private int studentSelected;
     private StudentModel studentModel;
     private float point;
+    private int examinationId;
 
     public StudentFragment() {
         // Required empty public constructor
@@ -145,7 +146,7 @@ public class StudentFragment extends Fragment {
 
     private void addRecycler() {
 
-        adapter = new StudentAdapter(getActivity(), new ItemStudentListeners() {
+        adapter = new StudentAdapter(getActivity(), new ItemListeners() {
             @Override
             public void onClick(View view, int position) {
                 studentSelected = position;
@@ -212,7 +213,7 @@ public class StudentFragment extends Fragment {
     private void getData() {
         layoutNullPermission.setVisibility(View.GONE);
         layoutNetwork.setVisibility(View.GONE);
-        LevelUpRequest.getLevelUps(5, 1, level, new Response() {
+        LevelUpRequest.getLevelUps(examinationId, 1, level, new Response() {
             @Override
             public void onStart() {
 
@@ -239,6 +240,7 @@ public class StudentFragment extends Fragment {
 
     private void init() {
         application = (VovinamApplication) getActivity().getApplication();
+        examinationId = application.getExaminationId();
         userVO = UserShared.ins(getActivity()).getUserModel();
         arrPermissions = application.getArrayPermission(userVO.id);
         per = new UserPermission(userVO.id, permission);

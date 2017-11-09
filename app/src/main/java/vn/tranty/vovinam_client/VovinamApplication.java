@@ -32,11 +32,11 @@ public class VovinamApplication extends Application {
         return permissions.get(userId);
     }
 
-    public static int getExaminationId() {
+    public  int getExaminationId() {
         return examinationId;
     }
 
-    public static void setExaminationId(int examinationId) {
+    public  void setExaminationId(int examinationId) {
         VovinamApplication.examinationId = examinationId;
     }
 

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
-import vn.tranty.vovinam_client.interfaces.ItemStudentListeners;
+import vn.tranty.vovinam_client.interfaces.ItemListeners;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.mics.Contanst;
 import vn.tranty.vovinam_client.models.chamthi.StudentModel;
@@ -24,10 +24,10 @@ import vn.tranty.vovinam_client.models.chamthi.StudentModel;
 public class StudentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
     private ArrayList<StudentModel> arrStudents;
-    private ItemStudentListeners listeners;
+    private ItemListeners listeners;
     private int pointType;
 
-    public StudentAdapter(Context mContext, ItemStudentListeners listeners) {
+    public StudentAdapter(Context mContext, ItemListeners listeners) {
         this.mContext = mContext;
         this.listeners = listeners;
         arrStudents = new ArrayList<>();

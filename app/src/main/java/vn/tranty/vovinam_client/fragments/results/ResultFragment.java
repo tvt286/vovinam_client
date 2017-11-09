@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import vn.tranty.vovinam_client.interfaces.ItemStudentListeners;
+import vn.tranty.vovinam_client.interfaces.ItemListeners;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.dialogs.HistoryDialog;
 import vn.tranty.vovinam_client.adapters.StudentAdapter;
@@ -45,7 +45,7 @@ public class ResultFragment extends Fragment {
 
         arrStudents = new ArrayList<>();
 
-        adapter = new StudentAdapter(getActivity(), new ItemStudentListeners() {
+        adapter = new StudentAdapter(getActivity(), new ItemListeners() {
             @Override
             public void onClick(View view, int position) {
                 Intent i = new Intent(getActivity(), PointDialog.class);

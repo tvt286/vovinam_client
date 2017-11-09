@@ -21,20 +21,17 @@ import butterknife.OnClick;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.VovinamApplication;
 import vn.tranty.vovinam_client.adapters.DoiKhangAdapter;
-import vn.tranty.vovinam_client.adapters.StudentAdapter;
 import vn.tranty.vovinam_client.customs.CustomSwipeLayout;
 import vn.tranty.vovinam_client.dialogs.HistoryDialog;
-import vn.tranty.vovinam_client.dialogs.PointDialog;
-import vn.tranty.vovinam_client.interfaces.ItemStudentListeners;
+import vn.tranty.vovinam_client.dialogs.PointDoiKhangDialog;
+import vn.tranty.vovinam_client.interfaces.ItemListeners;
 import vn.tranty.vovinam_client.interfaces.Response;
 import vn.tranty.vovinam_client.mics.Contanst;
 import vn.tranty.vovinam_client.models.chamthi.CompeteModel;
-import vn.tranty.vovinam_client.models.chamthi.StudentModel;
 import vn.tranty.vovinam_client.models.users.UserModel;
 import vn.tranty.vovinam_client.models.users.UserPermission;
 import vn.tranty.vovinam_client.preferences.UserShared;
 import vn.tranty.vovinam_client.requests.CompeteRequest;
-import vn.tranty.vovinam_client.requests.LevelUpRequest;
 
 
 public class CompeteFragment extends Fragment {
@@ -62,7 +59,8 @@ public class CompeteFragment extends Fragment {
     private UserPermission per;
     private int studentSelected;
     private CompeteModel competeModel;
-    private float point;
+    private float point1, point2;
+    private int examinationId;
 
     public CompeteFragment() {
         // Required empty public constructor
@@ -112,17 +110,18 @@ public class CompeteFragment extends Fragment {
 
     private void addRecycler() {
 
-        adapter = new DoiKhangAdapter(getActivity(), new ItemStudentListeners() {
+        adapter = new DoiKhangAdapter(getActivity(), new ItemListeners() {
             @Override
             public void onClick(View view, int position) {
                 studentSelected = position;
                 competeModel = arrCompetes.get(position);
 
-                Intent i = new Intent(getActivity(), PointDialog.class);
-//                i.putExtra("UserId", userVO.id);
-//                i.putExtra("StudentId", arrCompetes.get(position).id);
-//                i.putExtra("StudentName", arrCompetes.get(position).name);
-//                i.putExtra("PointType", pointType);
+                Intent i = new Intent(getActivity(), PointDoiKhangDialog.class);
+                i.putExtra("UserId", userVO.id);
+                i.putExtra("Student1Id", arrCompetes.get(position).levelup1.id);
+                i.putExtra("Student2Id", arrCompetes.get(position).levelup2.id);
+                i.putExtra("Student1Name", arrCompetes.get(position).levelup1.name);
+                i.putExtra("Student2Name", arrCompetes.get(position).levelup2.name);
                 startActivityForResult(i, START_POINT);
             }
 
@@ -141,8 +140,6 @@ public class CompeteFragment extends Fragment {
             public void onRefresh() {
                 if (UserPermission.contains(arrPermissions, per) || userVO.isAdminCompany) {
                     getData();
-
-
                 } else
                     swipeRefreshLayout.setRefreshing(false);
             }
@@ -167,8 +164,7 @@ public class CompeteFragment extends Fragment {
     }
 
     @OnClick(R.id.layout_network)
-    void clickNetowrk()
-    {
+    void clickNetowrk() {
         swipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
@@ -181,7 +177,7 @@ public class CompeteFragment extends Fragment {
     private void getData() {
         layoutNullPermission.setVisibility(View.GONE);
         layoutNetwork.setVisibility(View.GONE);
-        CompeteRequest.getCompetes(5, 1, pointType, new Response() {
+        CompeteRequest.getCompetes(examinationId, 1, pointType, new Response() {
             @Override
             public void onStart() {
 
@@ -209,6 +205,7 @@ public class CompeteFragment extends Fragment {
     private void init() {
         application = (VovinamApplication) getActivity().getApplication();
         userVO = UserShared.ins(getActivity()).getUserModel();
+        examinationId = application.getExaminationId();
         arrPermissions = application.getArrayPermission(userVO.id);
         per = new UserPermission(userVO.id, permission);
         arrCompetes = new ArrayList<>();
@@ -220,16 +217,12 @@ public class CompeteFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == END_POINT) {
-            point = data.getFloatExtra("Point", 0);
-//            if (pointType == Contanst.POINT_TYPE.CO_BAN) {
-//                studentModel.coBan.point = point;
-//                studentModel.coBan.userName = userVO.fullName;
-//            } else if (pointType == Contanst.POINT_TYPE.VO_DAO) {
-//                studentModel.voDao.point = point;
-//                studentModel.voDao.userName = userVO.fullName;
-//
-//            }
-
+            point1 = data.getFloatExtra("Point1", 0);
+            point2 = data.getFloatExtra("Point2", 0);
+            competeModel.levelup1.doiKhang.point = point1;
+            competeModel.levelup2.doiKhang.point = point2;
+            competeModel.levelup1.doiKhang.userName = userVO.fullName;
+            competeModel.levelup2.doiKhang.userName = userVO.fullName;
             new CapNhatGiaoDienDiemThi().execute();
         }
     }
@@ -247,17 +240,9 @@ public class CompeteFragment extends Fragment {
         @Override
         protected void onProgressUpdate(CompeteModel... values) {
             super.onProgressUpdate(values);
-//            if (pointType == Contanst.POINT_TYPE.CO_BAN)
-//                arrStudents.get(studentSelected).coBan = values[0].coBan;
-//            else if (pointType == Contanst.POINT_TYPE.VO_DAO)
-//                studentModel.voDao.point = point;
-//            else if (pointType == Contanst.POINT_TYPE.THE_LUC)
-//                studentModel.theLuc.point = point;
-//            else if (pointType == Contanst.POINT_TYPE.QUYEN)
-//                studentModel.quyen.point = point;
-//            else if (pointType == Contanst.POINT_TYPE.SONG_LUYEN)
-//                studentModel.songLuyen.point = point;
-//            adapter.notifyItemChanged(studentSelected, studentModel);
+            arrCompetes.get(studentSelected).levelup1.doiKhang = values[0].levelup1.doiKhang;
+            arrCompetes.get(studentSelected).levelup2.doiKhang = values[0].levelup2.doiKhang;
+            adapter.notifyItemChanged(studentSelected, competeModel);
 
         }
     }

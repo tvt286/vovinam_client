@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
-import vn.tranty.vovinam_client.interfaces.ItemStudentListeners;
+import vn.tranty.vovinam_client.interfaces.ItemListeners;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.models.chamthi.StudentModel;
 
@@ -20,9 +20,9 @@ import vn.tranty.vovinam_client.models.chamthi.StudentModel;
 public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
     private ArrayList<StudentModel> arrStudents;
-    private ItemStudentListeners listeners;
+    private ItemListeners listeners;
 
-    public ResultAdapter(Context mContext, ItemStudentListeners listeners) {
+    public ResultAdapter(Context mContext, ItemListeners listeners) {
         this.mContext = mContext;
         this.listeners = listeners;
         arrStudents = new ArrayList<>();

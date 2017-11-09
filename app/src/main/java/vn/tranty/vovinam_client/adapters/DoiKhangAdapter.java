@@ -11,12 +11,9 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import de.hdodenhof.circleimageview.CircleImageView;
 import vn.tranty.vovinam_client.R;
-import vn.tranty.vovinam_client.interfaces.ItemStudentListeners;
-import vn.tranty.vovinam_client.mics.Contanst;
+import vn.tranty.vovinam_client.interfaces.ItemListeners;
 import vn.tranty.vovinam_client.models.chamthi.CompeteModel;
-import vn.tranty.vovinam_client.models.chamthi.StudentModel;
 
 /**
  * Created by TRUC-SIDA on 10/19/2017.
@@ -25,10 +22,10 @@ import vn.tranty.vovinam_client.models.chamthi.StudentModel;
 public class DoiKhangAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
     private ArrayList<CompeteModel> arrStudents;
-    private ItemStudentListeners listeners;
+    private ItemListeners listeners;
     private int pointType;
 
-    public DoiKhangAdapter(Context mContext, ItemStudentListeners listeners) {
+    public DoiKhangAdapter(Context mContext, ItemListeners listeners) {
         this.mContext = mContext;
         this.listeners = listeners;
         arrStudents = new ArrayList<>();
@@ -49,28 +46,14 @@ public class DoiKhangAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         StudentViewHolder myHolder = (StudentViewHolder) holder;
-  //      StudentModel student = arrStudents.get(position);
-//        if (student.gender.contains("Male"))
-//            myHolder.imStudent.setImageResource(R.drawable.ic_user_male);
-//        else
-//            myHolder.imStudent.setImageResource(R.drawable.ic_user_female);
-//
-//        myHolder.tvName.setText(student.name);
-//        myHolder.tvClub.setText(student.club.name);
-//        myHolder.tvPoint.setText(student.level.name);
-//
-//        if (pointType == Contanst.POINT_TYPE.CO_BAN)
-//            myHolder.tvPoint.setText(String.valueOf(student.coBan.point));
-//        else if (pointType == Contanst.POINT_TYPE.VO_DAO)
-//            myHolder.tvPoint.setText(String.valueOf(student.voDao.point));
-//        else if (pointType == Contanst.POINT_TYPE.QUYEN)
-//            myHolder.tvPoint.setText(String.valueOf(student.quyen.point));
-//        else if (pointType == Contanst.POINT_TYPE.THE_LUC)
-//            myHolder.tvPoint.setText(String.valueOf(student.theLuc.point));
-//        else if (pointType == Contanst.POINT_TYPE.DOI_KHANG)
-//            myHolder.tvPoint.setText(String.valueOf(student.doiKhang.point));
-//        else if (pointType == Contanst.POINT_TYPE.SONG_LUYEN)
-//            myHolder.tvPoint.setText(String.valueOf(student.songLuyen.point));
+        CompeteModel student = arrStudents.get(position);
+        myHolder.tvName1.setText(String.valueOf(student.levelup1.name + " - " + student.levelup1.weight +"Kg"));
+        myHolder.tvName2.setText(String.valueOf(student.levelup2.name + " - " + student.levelup2.weight +"Kg"));
+        myHolder.tvClub1.setText(student.levelup1.club.name);
+        myHolder.tvClub2.setText(student.levelup2.club.name);
+        myHolder.tvPoint1.setText(String.valueOf(student.levelup1.doiKhang.point));
+        myHolder.tvPoint2.setText(String.valueOf(student.levelup2.doiKhang.point));
+        myHolder.tvStt.setText(String.valueOf(position + 1));
     }
 
     @Override

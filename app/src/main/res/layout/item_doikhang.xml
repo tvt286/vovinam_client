@@ -23,7 +23,7 @@
                 android:layout_height="48dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_user_male" />
+                android:src="@drawable/logo_circle" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Trần Tý"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/color_red"
                     android:textSize="16sp" />
 
                 <TextView
@@ -61,7 +61,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5.0"
-                    android:textColor="@android:color/black"
+
+                    android:textColor="@color/color_red"
                     android:textSize="15sp" />
             </LinearLayout>
         </RelativeLayout>
@@ -106,7 +107,7 @@
                 android:layout_height="48dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_user_male" />
+                android:src="@drawable/logo_circle" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -121,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Trần Tý"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/color_blue"
                     android:textSize="16sp" />
 
                 <TextView
@@ -144,7 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5.0"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/color_blue"
                     android:textSize="15sp" />
             </LinearLayout>
         </RelativeLayout>

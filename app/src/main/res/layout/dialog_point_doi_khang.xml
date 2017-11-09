@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="Trần Tý"
+            android:text="Chấm thi"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/colorDarkText"
             android:textStyle="bold" />
@@ -29,6 +29,13 @@
             android:layout_marginTop="20dp"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/tv_name_1"
+                android:text="Trần Tý"
+                android:textSize="16sp"
+                android:textColor="@color/color_red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -43,9 +50,16 @@
                     android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:id="@+id/tv_name_2"
+                android:layout_marginTop="10dp"
+                android:text="Trần Tý"
+                android:textSize="16sp"
+                android:textColor="@color/color_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <android.support.design.widget.TextInputLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -74,7 +88,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnCancel"
+                    android:id="@+id/btn_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -84,7 +98,7 @@
                     android:padding="8dp" />
 
                 <Button
-                    android:id="@+id/btnOk"
+                    android:id="@+id/btn_ok"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"

@@ -2,6 +2,7 @@ package vn.tranty.vovinam_client.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         arrAccount = new ArrayList<>();
     }
 
-    public void setArrayStudents(ArrayList<UserModel> arr) {
+    public void setArrayAccounts(ArrayList<UserModel> arr) {
         this.arrAccount = arr;
         this.notifyDataSetChanged();
     }
@@ -45,6 +46,15 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         AccountViewHolder myHolder = (AccountViewHolder) holder;
+        UserModel item = arrAccount.get(position);
+        myHolder.tvName.setText(item.fullName);
+        myHolder.tvUserName.setText(item.userName);
+
+        if (item.active)
+            myHolder.switchLock.setChecked(true);
+        else
+            myHolder.switchLock.setChecked(false);
+
 
     }
 
@@ -55,20 +65,18 @@ public class AccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
     class AccountViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-        @BindView(R.id.im_avatar)
-        CircleImageView imStudent;
         @BindView(R.id.tv_name)
         TextView tvName;
-        @BindView(R.id.tv_club)
-        TextView tvClub;
-        @BindView(R.id.tv_point)
-        TextView tvPoint;
+        @BindView(R.id.tv_username)
+        TextView tvUserName;
+        @BindView(R.id.switch_lock)
+        SwitchCompat switchLock;
 
         public AccountViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
+            switchLock.setOnClickListener(this);
+            switchLock.setOnLongClickListener(this);
         }
 
         @Override

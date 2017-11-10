@@ -233,7 +233,6 @@ public class StudentFragment extends Fragment {
                 swipeRefreshLayout.setRefreshing(false);
                 layoutNetwork.setVisibility(View.VISIBLE);
                 layoutNullPermission.setVisibility(View.GONE);
-
             }
         });
     }

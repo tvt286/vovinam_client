@@ -35,6 +35,8 @@ public class UserModel {
     @SerializedName("is_admin_company")
     @Expose
     public Boolean isAdminCompany;
+    @SerializedName("active")
+    public Boolean active;
     @SerializedName("user_permission")
     @Expose
     public ArrayList<UserPermission> userPermission = null;

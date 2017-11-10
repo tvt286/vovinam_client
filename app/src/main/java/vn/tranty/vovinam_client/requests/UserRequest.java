@@ -61,4 +61,20 @@ public class UserRequest {
             }
         });
     }
+
+    public static void lockAccount(int user_id, final AbstractResponse resp) {
+        resp.onStart();
+        Requests client = HandlerRequest.createService(Requests.class);
+        Call<ResponseVO> call = client.lockAccount(user_id);
+        call.enqueue(new Callback<ResponseVO>() {
+            @Override
+            public void onResponse(Call<ResponseVO> call, retrofit2.Response<ResponseVO> response) {
+                resp.onSuccess(response.body().erorr_code, response.body().message, response.body());
+            }
+            @Override
+            public void onFailure(Call<ResponseVO> call, Throwable t) {
+                resp.onFailure();
+            }
+        });
+    }
 }

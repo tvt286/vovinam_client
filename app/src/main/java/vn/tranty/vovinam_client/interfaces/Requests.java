@@ -39,4 +39,7 @@ public interface Requests {
     @POST("User/ChangePassword")
     Call<ResponseVO> changePassword(@Query("user_name") String userName, @Query("password_old") String passwordOld, @Query("password_new") String passwordNew);
 
+    @POST("User/LockAccount")
+    Call<ResponseVO> lockAccount(@Query("user_id") int userId);
+
 }

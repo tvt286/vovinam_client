@@ -20,6 +20,7 @@ import vn.tranty.vovinam_client.adapters.AccountAdapter;
 import vn.tranty.vovinam_client.customs.CustomSwipeLayout;
 import vn.tranty.vovinam_client.interfaces.ItemListeners;
 import vn.tranty.vovinam_client.interfaces.Response;
+import vn.tranty.vovinam_client.mics.Utils;
 import vn.tranty.vovinam_client.models.users.UserModel;
 import vn.tranty.vovinam_client.preferences.UserShared;
 import vn.tranty.vovinam_client.requests.UserRequest;
@@ -37,6 +38,7 @@ public class LockAccountActivity extends AppCompatActivity {
     private UserModel userVO;
     private ArrayList<UserModel> arrUsers;
     private AccountAdapter adapter;
+    private UserModel userSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,8 @@ public class LockAccountActivity extends AppCompatActivity {
         adapter = new AccountAdapter(this, new ItemListeners() {
             @Override
             public void onClick(View view, int position) {
-
+                userSelected = arrUsers.get(position);
+                doLockAccount();
             }
 
             @Override
@@ -73,6 +76,29 @@ public class LockAccountActivity extends AppCompatActivity {
             }
         });
 
+        swpAccount.post(new Runnable() {
+            @Override
+            public void run() {
+                swpAccount.setRefreshing(true);
+                getData();
+            }
+        });
+    }
+
+    private void doLockAccount() {
+        UserRequest.lockAccount(userSelected.id, new AbstractResponse() {
+            @Override
+            public void onSuccess(int error_code, String message, Object obj) {
+                super.onSuccess(error_code, message, obj);
+                Utils.showToast(message, LockAccountActivity.this);
+            }
+
+            @Override
+            public void onFailure() {
+                super.onFailure();
+                Utils.showToast("Vui lòng kiểm tra lại internet!", LockAccountActivity.this);
+            }
+        });
     }
 
     @OnClick(R.id.layout_network)
@@ -106,7 +132,7 @@ public class LockAccountActivity extends AppCompatActivity {
             public void onSuccess(int error_code, String message, Object obj) {
                 if (error_code == 200) {
                     arrUsers = (ArrayList<UserModel>) obj;
-                    adapter.setArrayStudents(arrUsers);
+                    adapter.setArrayAccounts(arrUsers);
                 }
                 swpAccount.setRefreshing(false);
             }

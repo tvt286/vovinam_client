@@ -41,7 +41,7 @@
             android:name=".dialogs.PointDoiKhangDialog"
             android:theme="@style/MyDialog" />
         <activity android:name=".activities.LockAccountActivity"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName=".activities.ProfileActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>

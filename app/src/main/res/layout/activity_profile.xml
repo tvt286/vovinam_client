@@ -28,7 +28,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:elevation="2dp"
-            android:src="@drawable/user_default" />
+            android:src="@drawable/logo_circle" />
 
         <TextView
             android:id="@+id/tv_name"

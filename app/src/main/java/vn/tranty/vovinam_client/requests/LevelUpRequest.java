@@ -6,6 +6,7 @@ import vn.tranty.vovinam_client.interfaces.Requests;
 import vn.tranty.vovinam_client.interfaces.Response;
 import vn.tranty.vovinam_client.models.ResponseVO;
 import vn.tranty.vovinam_client.models.chamthi.LevelUpRespone;
+import vn.tranty.vovinam_client.models.results.ResultResponse;
 
 /**
  * Created by TRUC-SIDA on 11/2/2017.
@@ -24,6 +25,22 @@ public class LevelUpRequest {
             }
             @Override
             public void onFailure(Call<LevelUpRespone> call, Throwable t) {
+                resp.onFailure();
+            }
+        });
+    }
+
+    public static void getResults(int examinationId, int companyId, int levelId, final Response resp) {
+        resp.onStart();
+        Requests client = HandlerRequest.createService(Requests.class);
+        Call<ResultResponse> call = client.getResults(examinationId, companyId, levelId);
+        call.enqueue(new Callback<ResultResponse>() {
+            @Override
+            public void onResponse(Call<ResultResponse> call, retrofit2.Response<ResultResponse> response) {
+                resp.onSuccess(response.body().erorr_code, response.body().message, response.body().data);
+            }
+            @Override
+            public void onFailure(Call<ResultResponse> call, Throwable t) {
                 resp.onFailure();
             }
         });

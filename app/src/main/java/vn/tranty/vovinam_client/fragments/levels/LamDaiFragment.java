@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.adapters.PagerAdapter;
+import vn.tranty.vovinam_client.fragments.results.ResultFragment;
 import vn.tranty.vovinam_client.fragments.students.StudentFragment;
 import vn.tranty.vovinam_client.mics.Contanst;
 
@@ -117,7 +118,7 @@ public class LamDaiFragment extends Fragment {
         adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI, Contanst.POINT_TYPE.VO_DAO));
         adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI, Contanst.POINT_TYPE.QUYEN));
         adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI, Contanst.POINT_TYPE.THE_LUC));
-        adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI, Contanst.POINT_TYPE.CO_BAN));
+        adapter.addFragment(ResultFragment.newInstance(Contanst.FRAGMENT.LAMDAI));
 
     }
 

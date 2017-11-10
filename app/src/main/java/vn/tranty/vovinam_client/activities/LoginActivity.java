@@ -147,6 +147,7 @@ public class LoginActivity extends MyAppCompatActivity {
     private void setupSpinner(ArrayList<ExaminationModel> arrExaminations) {
         arrNameExamination = new String[arrExaminations.size()];
         arrExaminationId = new HashMap<Integer, String>();
+
         for (int i = 0; i < arrExaminations.size(); i++) {
             arrExaminationId.put(i, String.valueOf(arrExaminations.get(i).id));
             arrNameExamination[i] = arrExaminations.get(i).name;
@@ -211,8 +212,6 @@ public class LoginActivity extends MyAppCompatActivity {
                         btnLogin.setClickable(true);
                         Utils.showToast(message, LoginActivity.this);
                     }
-
-
                 }
 
                 @Override

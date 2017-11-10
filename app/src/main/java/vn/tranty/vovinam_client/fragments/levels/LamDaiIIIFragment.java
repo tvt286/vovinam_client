@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import vn.tranty.vovinam_client.R;
 import vn.tranty.vovinam_client.adapters.PagerAdapter;
+import vn.tranty.vovinam_client.fragments.results.ResultFragment;
 import vn.tranty.vovinam_client.fragments.students.StudentFragment;
 import vn.tranty.vovinam_client.mics.Contanst;
 
@@ -122,7 +123,7 @@ public class LamDaiIIIFragment extends Fragment {
         adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI_III, Contanst.POINT_TYPE.QUYEN));
         adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI_III, Contanst.POINT_TYPE.SONG_LUYEN));
         adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI_III, Contanst.POINT_TYPE.DOI_KHANG));
-        adapter.addFragment(StudentFragment.newInstance(Contanst.FRAGMENT.LAMDAI_III, Contanst.POINT_TYPE.CO_BAN));
+        adapter.addFragment(ResultFragment.newInstance(Contanst.FRAGMENT.LAMDAI_III));
     }
 
     private void addTab() {

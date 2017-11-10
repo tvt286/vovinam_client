@@ -10,6 +10,7 @@ import vn.tranty.vovinam_client.models.*;
 import vn.tranty.vovinam_client.models.chamthi.CompeteRespone;
 import vn.tranty.vovinam_client.models.chamthi.LevelUpRespone;
 import vn.tranty.vovinam_client.models.examinations.ExaminationResponseVO;
+import vn.tranty.vovinam_client.models.results.ResultResponse;
 import vn.tranty.vovinam_client.models.users.UserResponseVO;
 import vn.tranty.vovinam_client.models.users.UsersResponseVO;
 
@@ -19,8 +20,12 @@ public interface Requests {
     Call<UserResponseVO> login(@Query("user_name") String userName, @Query("password") String password);
 
     @GET("LevelUp/GetLevelUps")
-
     Call<LevelUpRespone> getLevelUps(@Query("examination_id") int examination_id, @Query("company_id") int companyId, @Query("level_id") int levelId);
+
+    @GET("LevelUp/GetResults")
+    Call<ResultResponse> getResults(@Query("examination_id") int examination_id, @Query("company_id") int companyId, @Query("level_id") int levelId);
+
+
     @GET("User/GetUsers")
     Call<UsersResponseVO> getUsers(@Query("company_id") int companyId);
 

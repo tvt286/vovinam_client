@@ -1,6 +1,7 @@
 package vn.tranty.vovinam_client.customs;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -38,6 +39,16 @@ public class CustomListView extends LinearLayout {
         mContext = context;
     }
 
+    public CustomListView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        mContext = context;
+    }
+
+    public CustomListView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        mContext = context;
+    }
+
     public void addListView(LinearLayout linearMain, ArrayList<ResultModel> arrList, ItemListeners listener) {
         for (int i = 0; i < arrList.size(); i++) {
             arrStudents = arrList.get(i).students;
@@ -54,18 +65,18 @@ public class CustomListView extends LinearLayout {
                 if (showAll) {
                     for (int j = 0; j < arrStudents.size(); j++) {
                         if (arrList.get(i).gender.equals("Nam"))
-                            holderGender.child.add(new HolderStudent(arrStudents.get(j),1, listener));
+                            holderGender.child.add(new HolderStudent(arrStudents.get(j), 1, listener));
                         else
-                            holderGender.child.add(new HolderStudent(arrStudents.get(j),2, listener));
+                            holderGender.child.add(new HolderStudent(arrStudents.get(j), 2, listener));
 
                         holderGender.layout.addView(holderGender.child.get(j).viewWrap);
                     }
                 } else {
                     for (int j = 0; j < NUM_SHOW_LIMIT; j++) {
                         if (arrList.get(i).gender.equals("Nam"))
-                            holderGender.child.add(new HolderStudent(arrStudents.get(j),1, listener));
+                            holderGender.child.add(new HolderStudent(arrStudents.get(j), 1, listener));
                         else
-                            holderGender.child.add(new HolderStudent(arrStudents.get(j),2, listener));
+                            holderGender.child.add(new HolderStudent(arrStudents.get(j), 2, listener));
 
                         holderGender.layout.addView(holderGender.child.get(j).viewWrap);
                     }
@@ -112,9 +123,9 @@ public class CustomListView extends LinearLayout {
                     child = new ArrayList<HolderStudent>();
                     for (int j = 0; j < resultModel.students.size(); j++) {
                         if (resultModel.gender.equals("Nam"))
-                            child.add(new HolderStudent(resultModel.students.get(j),1, listener));
+                            child.add(new HolderStudent(resultModel.students.get(j), 1, listener));
                         else
-                            child.add(new HolderStudent(resultModel.students.get(j),2, listener));
+                            child.add(new HolderStudent(resultModel.students.get(j), 2, listener));
                         layout.addView(child.get(j).viewWrap);
                     }
                 }
@@ -134,7 +145,7 @@ public class CustomListView extends LinearLayout {
         private View viewWrap;
         private ItemListeners listener;
 
-        private HolderStudent(StudentModel studentModel,int gender, ItemListeners listener) {
+        private HolderStudent(StudentModel studentModel, int gender, ItemListeners listener) {
             this.listener = listener;
             inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             viewWrap = inflater.inflate(R.layout.item_student, null);

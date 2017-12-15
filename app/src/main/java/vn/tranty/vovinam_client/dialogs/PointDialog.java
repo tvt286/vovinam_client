@@ -67,7 +67,7 @@ public class PointDialog extends AppCompatActivity {
     @OnClick(R.id.btn_ok)
     void okClick()
     {
-        if (edPoint.getText().equals(""))
+        if (edPoint.getText().toString().matches(""))
         {
             Utils.showToast("Vui lòng nhập điểm!", PointDialog.this);
         }

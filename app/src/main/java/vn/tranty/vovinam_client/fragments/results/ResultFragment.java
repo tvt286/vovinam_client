@@ -104,7 +104,7 @@ public class ResultFragment extends Fragment implements ItemListeners {
                 @Override
                 public void run() {
                     swipeRefreshLayout.setRefreshing(true);
-                    getData();
+                //    getData();
                 }
             });
 

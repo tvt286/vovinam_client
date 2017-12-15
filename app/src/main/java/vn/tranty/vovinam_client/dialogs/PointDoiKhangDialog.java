@@ -65,7 +65,7 @@ public class PointDoiKhangDialog extends AppCompatActivity {
 
     @OnClick(R.id.btn_ok)
     void okClick() {
-        if (edPoint1.getText().equals("") || edPoint2.getText().equals("")) {
+        if (edPoint1.getText().toString().matches("") || edPoint2.getText().toString().matches("")) {
             Utils.showToast("Vui lòng nhập điểm!", PointDoiKhangDialog.this);
         } else {
             point1 = Float.parseFloat(edPoint1.getText().toString());
